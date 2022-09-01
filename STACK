@@ -1,0 +1,106 @@
+#include<iostream.h>
+#include<conio.h>
+class stack
+{
+    int top;int stackdata[100];int size;
+    public:
+	stack()
+	{
+	    top=-1;
+	}
+	void setsize(int n)
+	{
+	    size=n;
+	   
+	}
+	void push(int x)
+	{
+	    if(top>=size-1)
+	    {
+		cout<<"\n Stack overflow...";
+	    }
+	    else
+	    {
+		top++;
+		stackdata[top]=x;
+		cout<<x<<"is pushed";
+	    }
+	}
+
+	void pop()
+	{
+	    int  x;
+	    if(top<=-1)
+	    {
+		cout<<"Stack Underflow....";
+	    }
+	    else
+	    {
+		x=stackdata[top];
+		top--;
+		cout<<x<<"is popped";
+	    }
+	}
+	void display()
+	{
+	    if(top>=0)
+	    {
+		cout<<"\n The element in stack are :";
+		cout<<"\n~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+		for(int i=top;i>=0;i--)
+		{
+		    cout<<"\n\n DATA"<<i+1<<"="<<stackdata[i];
+		}
+		cout<<"\n\n\n Press any key to continue...";
+
+	    }
+	    else
+	    {
+
+		cout<<"Stack is empty";
+	    }
+
+	}
+};
+int main()
+{
+    stack s1;int s;
+    clrscr();
+    cout<<"enter the size of the stack[maximum 100] : ";
+	cin>>s;
+    s1.setsize(s);
+    int option,n;
+    do
+    {
+	 cout<<"\n\t\t Stack Operation";
+	 cout<<"\n\t\t~~~~~~~~~~~~~~~~~~~~~";
+	 cout<<"\n\t 1.PUSH \n\t 2.POP \n\t 3.DISPLAY \n\t 4.EXIT ";
+	 cout<<"\nEnter your option: ";
+	 cin>>option;
+	 switch(option)
+	 {
+		case 1:
+			cout<<"Enter the value to be pushed";
+			cin>>n;
+			s1.push(n);
+			s1.display();
+			break;
+		case 2:
+			s1.pop();
+			s1.display();
+			break;
+		case 3:
+			s1.display();
+			break;
+		case 4:
+			cout<<"You are on exit";
+			break;
+		default:
+			cout<<"Enter only 1,2,3,4";
+			break;
+	 }
+    }
+    while(option!=4);
+    return 0;
+
+}
